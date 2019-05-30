@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Invoice</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="invoice.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
+        td:focus {  /*pentru editarea cantitatii intr-o linie a tabelului din invoice*/
+            color: red;
+            height: 2vh;
+            overflow: "hidden";
+            /* white-space: nowrap; */
+            overflow: hidden;
+            display: inline-block;
+        }
+        td {  /*pentru editarea cantitatii intr-o linie a tabelului din invoice*/
+             height: 2rem;
+            
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- DE AICI AM INCEPUT EDITAREA  -->
+    <div class="container" id="invoiceContainer">
+
+        <h1 class="invoiceTitle">Invoice</h1>
+
+        <!-- PENTRU CA ESTE O SINGURA FACTURA, AM SCOS BUTOANELE DE SELECTARE
+        A FURNIZORULUI SI A CLIENTULUI - CAMPURILE VOR FI POPULATE DIN JS
+        CAND SE VREA EDITAREA FACTURII cu click pe EDIT  SE VOR ACTIVA BUTOANELE 
+        document.getElementById("myBtn").disabled = true; 
+        -->
+        <!-- supplier btn -->
+
+        <div class="row" id="invoiceHeader">
+
+            <div class="col-sm-4">
+
+                <div id="supplier">
+                    <p id = "supplierID" title = "" class="supplierCustomer">Supplier</p>
+                    <p class="supplierInfo">Name: &nbsp;<span id="supplierName"></span> </p>
+                    <p class="supplierInfo">CUI: &nbsp;<span id="supplierCUI"></span> </p>
+
+                </div>
+            </div>
+
+
+
+            <div class="col-sm-4">
+                <!-- series number date imput (center) -->
+                <div class="">
+
+                    <span>Series</span>
+                    <p  title = "" id="invoiceSeries">Invoice Series</p>
+                    <span>Number</span>
+                    <p id="invoiceNumber">Invoice Number</p>
+                    <span>Date</span>
+                    <p id="invoiceDate">Invoice Date</p>
+
+                </div>
+            </div>
+            <!-- customer btn -->
+
+            <div class="col-sm-4">
+                <div id="customer">
+                    <p id ="customerID" title = "" class="supplierCustomer">Customer</p>
+                    <p class="supplierInfo">Name: &nbsp;<span id="customerName"></span> </p>
+                    <p class="supplierInfo">CUI: &nbsp;<span id="customerCUI"></span> </p>
+
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+        <!-- invoice table -->
+        <div class="invoiceTable">
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">No.</th>
+                        <th scope="col">Product</th>
+                        <th scope="col">Quantity</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Value</th>
+                        <th scope="col">Vat</th>
+                        <th scope="col">Edit /Delete</th>
+                    </tr>
+                </thead>
+                <tbody id="tableBody"></tbody> 
+                <!-- aici populam factura cu ce primim din API -->
+            </table>
+        </div>
+
+
+        <!-- save btn (down right) -->
+        <button value = "saveInvoice" id="saveInvoice" class="btn saveBtn alert-success">Save</button>
+
+
+
+
+    </div> <!-- container-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script src="index.js"></script>
+</body>
+
+</html>
